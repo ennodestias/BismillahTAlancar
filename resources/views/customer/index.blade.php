@@ -8,7 +8,7 @@
             <div class="col-sm-6">
                 <div id="datatable_filter" class="datatable_filter">
                     <label>
-                        <input type="search" class="form-control input-sm" placeholder="&#xF002;  Cari paket ..." style="font-family:Arial, FontAwesome; font-weight: normal">
+                        <input type="search" class="form-control input-sm" placeholder="&#xF002;  Cari pelanggan ..." style="font-family:Arial, FontAwesome; font-weight: normal">
                     </label>
                 </div>
             </div>
@@ -44,7 +44,6 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>No</th>
                                 <th>Nama</th>
                                 <th>Alamat</th>
                                 <th>No HP</th>
@@ -52,18 +51,19 @@
                             </tr>
                         </thead>
                         <tbody>
+                        @foreach($customer as $customers)
                             <tr>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
+                                <th>{{ $customers -> nama }}</th>
+                                <th>{{ $customers -> alamat }}</th>
+                                <th>{{ $customers -> nohp }}</th>
                                 <th>
                                     <div style="width:60px">
-                                        <a href="{{ url('customer/edit') }}" class="btn btn-warning btn-xs btn-edit" id="edit"><i class="fa fa-pencil-square-o"></i></a>
+                                        <a href="{{ route('customer.edit', $customers->id) }}" class="btn btn-warning btn-xs btn-edit" id="edit"><i class="fa fa-pencil-square-o"></i></a>
                                         <button href="{{ url('customer') }}" class="btn btn-danger btn-xs btn-hapus" id="delete"><i class="fa fa-trash-o"></i></button>
                                     </div>
                                 </th>
                             </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

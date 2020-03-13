@@ -12,23 +12,23 @@
                   <div class="box-body">
  
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Nama</label>
+                      <label>Nama</label>
                       <input type="text" name="nama" value="{{$paket->nama}}" class="form-control" id="nama" placeholder="Nama Paket">
                       <input type="hidden" name="id" value="{{$paket->id}}" class="form-control" id="id">
                     </div>
  
                     <div class="form-group">
-                      <label for="exampleInputPassword1">Harga</label>
+                      <label>Harga</label>
                       <input type="number" name="harga" value="{{$paket->harga}}" class="form-control" id="harga" placeholder="Harga Paket">
                     </div>
 
                     <div class="form-group">
-                      <label for="exampleInputPassword1">Satuan</label>
+                      <label>Satuan</label>
                       <input type="text" name="satuan" value="{{$paket->satuan}}" class="form-control" id="satuan" placeholder="Satuan">
                     </div>
 
                     <div class="form-group">
-                      <label for="exampleInputPassword1">Durasi</label>
+                      <label>Durasi</label>
                       <input type="text" name="durasi" value="{{$paket->durasi}}" class="form-control" id="durasi" placeholder="Durasi Pengerjaan">
                     </div>
                    

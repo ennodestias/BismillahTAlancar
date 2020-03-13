@@ -8,22 +8,23 @@
         <div class="box box-warning">
             <div class="box-body">
                
-                <form role="form" action="{{ url('customer') }}">
+                <form id="editcustomer">
                   <div class="box-body">
  
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Nama</label>
-                      <input type="text" name="nama" class="form-control" id="exampleInputEmail1" placeholder="Nama Pelanggan">
+                      <label>Nama</label>
+                      <input type="text" name="nama" value="{{$customer->nama}}" class="form-control" id="nama" placeholder="Nama Pelanggan">
+                      <input type="hidden" name="id" value="{{$customer->id}}" class="form-control" id="id">
                     </div>
  
                     <div class="form-group">
-                      <label for="exampleInputPassword1">Alamat</label>
-                      <input type="text" name="alamat" class="form-control" id="exampleInputPassword1" placeholder="Alamat Pelanggan">
+                      <label>Alamat</label>
+                      <input type="text" name="alamat" value="{{$customer->alamat}}" class="form-control" id="alamat" placeholder="Alamat Pelanggan">
                     </div>
 
                     <div class="form-group">
-                      <label for="exampleInputPassword1">No HP</label>
-                      <input type="number" name="nohp" class="form-control" id="exampleInputPassword1" placeholder="No HP Pelanggan">
+                      <label>No HP</label>
+                      <input type="number" name="nohp" value="{{$customer->nohp}}" class="form-control" id="nohp" placeholder="No HP Pelanggan">
                     </div>
                    
                   </div>
@@ -38,7 +39,7 @@
                       </div>
                       <div class="col-md-6">
                         <p align="right">
-                          <button type="submit" class="btn btn-primary">Perbarui</button>
+                          <button type="submit" id="submit" class="btn btn-primary">Perbarui</button>
                         </p>
                       </div>
                     </div>
@@ -51,4 +52,40 @@
     </div>
 </div>
  
+@endsection
+
+@section('scripts')
+
+<script>
+$(document).ready(function(){   
+    $('#editcustomer').on('submit', function(e){
+        e.preventDefault();
+
+        var id = $('#id').val();
+        var nama = $('#nama').val();
+        var alamat = $('#alamat').val();
+        var nohp = $('#nohp').val();
+
+        $.ajax({
+            type: "PUT",
+            headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+            url: "/api/customer/edit/"+id,
+            cache:false,
+            dataType: "json",
+            data: $('#editcustomer').serialize(),
+            success: function(data){
+                window.location = "/customer";
+                toastr.options.closeButton = true;
+                toastr.options.closeMethod = 'fadeOut';
+                toastr.options.closeDuration = 100;
+                toastr.success(data.message);
+            },
+            error: function(error){
+            console.log(error);
+            }
+        });
+    });
+});
+</script>
+
 @endsection

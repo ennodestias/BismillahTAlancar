@@ -17,5 +17,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//paket
 Route::post('/paket/add', 'Paket_controller@store');
 Route::put('/paket/edit/{id}', 'Paket_controller@update');
+
+//customer
+Route::post('/customer/add', 'Customer_controller@store');
+Route::put('/customer/edit/{id}', 'Customer_controller@update');

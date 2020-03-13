@@ -9,27 +9,28 @@
         </div>
         <div class="box box-warning">
           <div class="box-body">
+          
                 <form id="addpaket">
 
                   <div class="box-body">
  
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Nama</label>
+                      <label>Nama</label>
                       <input type="text" name="nama" class="form-control" id="nama" placeholder="Nama Paket">
                     </div>
  
                     <div class="form-group">
-                      <label for="exampleInputPassword1">Harga</label>
+                      <label>Harga</label>
                       <input type="number" name="harga" class="form-control" id="harga" placeholder="Harga Paket">
                     </div>
 
                     <div class="form-group">
-                      <label for="exampleInputPassword1">Satuan</label>
+                      <label>Satuan</label>
                       <input type="text" name="satuan" class="form-control" id="satuan" placeholder="Satuan">
                     </div>
 
                     <div class="form-group">
-                      <label for="exampleInputPassword1">Durasi</label>
+                      <label>Durasi</label>
                       <input type="text" name="durasi" class="form-control" id="durasi" placeholder="Durasi Pengerjaan">
                     </div>
                    

@@ -26,7 +26,7 @@ Route::group(['middleware'=>'auth'],function(){
 
     Route::get("customer", 'Customer_controller@index');
     Route::get("customer/add", 'Customer_controller@add');
-    Route::get("customer/edit", 'Customer_controller@edit');
+    Route::get("customer/edit/{id}", ['as' => 'customer.edit', 'uses' => 'Customer_controller@edit']);
 });
 
 
