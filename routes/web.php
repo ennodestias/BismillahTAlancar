@@ -25,8 +25,11 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get("paket-laundry/edit/{id}", ['as' => 'paket.edit', 'uses' => 'Paket_controller@edit']);
 
     Route::get("customer", 'Customer_controller@index');
-    Route::get("customer/add", 'Customer_controller@add');
     Route::get("customer/edit/{id}", ['as' => 'customer.edit', 'uses' => 'Customer_controller@edit']);
+
+    Route::get("karyawan", 'Karyawan_controller@index');
+
+    Route::get("pesanan", 'Pesanan_controller@index');
 });
 
 

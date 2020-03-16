@@ -9,7 +9,7 @@
         </li>
 
         <li>
-          <a href="#">
+          <a href="{{ url('/pesanan') }}">
             <i class="fa fa-pie-chart"></i>
             <span>Pesanan Laundry</span>
           </a>
@@ -30,7 +30,7 @@
         </li>
 
         <li>
-          <a href="#">
+          <a href="{{ url('/karyawan') }}">
             <i class="fa fa-pie-chart"></i>
             <span>Kelola Karyawan</span>
           </a>

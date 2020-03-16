@@ -23,4 +23,8 @@ Route::put('/paket/edit/{id}', 'Paket_controller@update');
 
 //customer
 Route::post('/customer/add', 'Customer_controller@store');
+Route::get('/customer/edit/{id}', 'Customer_controller@edit');
 Route::put('/customer/edit/{id}', 'Customer_controller@update');
+
+//karyawan
+Route::post('/karyawan/add', 'Karyawan_controller@store');

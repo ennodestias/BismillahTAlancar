@@ -23,7 +23,8 @@ class Customer_controller extends Controller
         $title = 'Edit Data Pelanggan';
         $customer = Customer::findOrFail($id);
 
-        return view('customer.edit',compact('title','customer'));
+        return response()->json($customer);
+        // return view('customer.edit',compact('title','customer'));
     }
 
     public function store(Request $request){
