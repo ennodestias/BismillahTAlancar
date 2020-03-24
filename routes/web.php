@@ -30,6 +30,7 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get("karyawan", 'Karyawan_controller@index');
 
     Route::get("pesanan", 'Pesanan_controller@index');
+    Route::get("pesanan/add", 'Pesanan_controller@add');
 });
 
 

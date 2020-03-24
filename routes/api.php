@@ -22,9 +22,10 @@ Route::post('/paket/add', 'Paket_controller@store');
 Route::put('/paket/edit/{id}', 'Paket_controller@update');
 
 //customer
+Route::get('/customer', 'Customer_controller@index');
 Route::post('/customer/add', 'Customer_controller@store');
-Route::get('/customer/edit/{id}', 'Customer_controller@edit');
 Route::put('/customer/edit/{id}', 'Customer_controller@update');
+Route::delete('/customer/{id}', 'Customer_controller@destroy');
 
 //karyawan
 Route::post('/karyawan/add', 'Karyawan_controller@store');

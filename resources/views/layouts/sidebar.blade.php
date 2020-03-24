@@ -2,7 +2,7 @@
 
       <ul class="sidebar-menu">
         <li>
-          <a href="#">
+          <a href="{{ url('/beranda') }}">
             <i class="fa fa-pie-chart"></i>
             <span>Dashboard</span>
           </a>

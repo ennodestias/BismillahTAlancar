@@ -24,6 +24,13 @@ class Pesanan_controller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function add(){
+        $title = 'Tambah Pesanan Laundry';
+
+        return view('pesanan.add',compact('title'));
+    }
+
     public function create()
     {
         //

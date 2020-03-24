@@ -18,29 +18,8 @@
                 </p>
             </div>
         </div>
-        <div class="box box-warning">
-            <div class="box-header">    
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h4>{{ $title }}</h4> 
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="dataTables_length" id="datatable_length" style="float:right">
-                            Tampilkan
-                            <label>
-                                <select name="datatable_length" aria-controls="datatable" class="form-control input-sm">
-                                    <option value="10">10</option>
-                                    <option value="25">25</option>
-                                    <option value="50">50</option>
-                                    <option value="100">100</option>
-                                </select>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
+    
+    <div class="row">
         <div class="col-md-6">
           <!-- Custom Tabs -->
           <div class="nav-tabs-custom">
@@ -49,41 +28,16 @@
               <li><a href="#dicuci" data-toggle="tab">Dicuci</a></li>
               <li><a href="#dikeringkan" data-toggle="tab">Dikeringkan</a></li>
               <li><a href="#disetrika" data-toggle="tab">Disetrika</a></li>
+              <li><a href="#selesai" data-toggle="tab">Selesai</a></li>
             </ul>
-            <div class="tab-content">
-              <div class="tab-pane active" id="semuapesanan">
-              </div>
-              <!-- /.tab-pane -->
-              <div class="tab-pane" id="dicuci">
-                The European languages are members of the same family. Their separate existence is a myth.
-                For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
-                in their grammar, their pronunciation and their most common words. Everyone realizes why a
-                new common language would be desirable: one could refuse to pay expensive translators. To
-                achieve this, it would be necessary to have uniform grammar, pronunciation and more common
-                words. If several languages coalesce, the grammar of the resulting language is more simple
-                and regular than that of the individual languages.
-              </div>
-              <!-- /.tab-pane -->
-              <div class="tab-pane" id="tab_3">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                It has survived not only five centuries, but also the leap into electronic typesetting,
-                remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-                sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-                like Aldus PageMaker including versions of Lorem Ipsum.
-              </div>
-              <!-- /.tab-pane -->
-            </div>
-            <!-- /.tab-content -->
           </div>
           <!-- nav-tabs-custom -->
         </div>
         <!-- /.col -->
-      </div>
-      <!-- /.row -->
-
-
+    </div>
+    <!-- /.row -->
+    
+        <div class="box box-primary">
             <div class="box-body">
                 <div class="table-responsive">
                     <table class="table">

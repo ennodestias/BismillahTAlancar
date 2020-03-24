@@ -116,6 +116,27 @@
                 </div>
             </div>
 
+            <!-- Modal untuk menghapus data -->
+            <div id="confirmModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Confirmation</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <h6 align="center" style="margin:0;">Anda yakin ingin menghapus data ini?</h6>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" name="ok_button" id="ok_button" class="btn btn-danger">OK</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         <div class="box box-warning">
             <div class="box-header">
                 <div class="row">
@@ -139,7 +160,7 @@
             </div>        
             <div class="box-body">
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table" id="data_customer">
                         <thead>
                             <tr>
                                 <th>Nama</th>
@@ -149,20 +170,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach($customer as $customers)
-                            <tr>
-                                <th>{{ $customers -> nama }}</th>
-                                <th>{{ $customers -> alamat }}</th>
-                                <th>{{ $customers -> nohp }}</th>
-                                <th>
-                                    <div style="width:60px">
-                                        <a class="btn btn-warning btn-xs btn-edit" data-toggle="modal" data-target="#editModal"><i class="fa fa-pencil-square-o"></i></a>
-                                        <button href="{{ url('customer') }}" class="btn btn-danger btn-xs btn-hapus" id="delete"><i class="fa fa-trash-o"></i></button>
-                                    </div>
-                                </th>
-                            </tr>
-                        @endforeach
-
                         </tbody>
                     </table>
                 </div>
@@ -176,6 +183,11 @@
 
 
 @section('scripts')
+
+ <!-- DataTables -->
+ <script src="../../plugins/datatables/jquery.dataTables.js"></script>
+  <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+  <!-- page script -->
 
 <script>
 $(document).ready(function(){   
@@ -218,9 +230,7 @@ $(document).ready(function(){
         var nama = $('#nama').val();
         var alamat = $('#alamat').val();
         var nohp = $('#nohp').val();
-
         
-
         $.ajax({
             type: "PUT",
             headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}' },
@@ -241,6 +251,59 @@ $(document).ready(function(){
         });
     });
 });
+
+$(document).ready(function(){   
+    fill_datatable();
+        function fill_datatable(){
+            var dataTable = $('#data_customer').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax:{
+                    url: "/customer",
+                },
+                columns: [
+                    {
+                        data: 'nama',
+                        name: 'name'
+                    },
+                    {
+                        data: 'alamat',
+                        name: 'alamat'
+                    },
+                    {
+                        data: 'nohp',
+                        name: 'nohp'
+                    },
+                    {data: 'action', name: 'action', orderable: false, searchable: false},
+                ]
+            });
+        }
+    });
+
+$(document).on('click', '.deleteCustomer', function(){
+    var id = $(this).attr('id');
+    $('#confirmModal').modal('show');
+  });
+  $('#ok_button').click(function(){
+    $.ajax({
+        type: "DELETE",
+        headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+        dataType: "json",
+        url: '/api/customer/'+id,
+        beforeSend:function(){
+          $('#ok_button').text('Deleting...');
+        },
+        success: function (data) {
+          $('#confirmModal').modal('hide');
+            $('#data_customer').DataTable().ajax.reload();
+            toastr.options.closeButton = true;
+            toastr.options.closeMethod = 'fadeOut';
+            toastr.options.closeDuration = 100;
+            toastr.success(data.message);
+        }
+    });
+});
+
 </script>
 
 @endsection
