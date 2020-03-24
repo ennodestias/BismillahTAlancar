@@ -9,7 +9,7 @@ class Customer_controller extends Controller
 {
     public function index(Request $request){
         $title = 'Data Pelanggan';
-        $customer = Customer::get();
+        $data = Customer::get();
         if(request()->ajax()){
             return datatables()->of($data)->addIndexColumn()
                 ->addColumn('action', function($customer){
@@ -23,7 +23,7 @@ class Customer_controller extends Controller
                 ->make(true);
         }
 
-        return view('customer.index',compact('title','customer'));
+        return view('customer.index',compact('title','data'));
     }
 
     public function add(){

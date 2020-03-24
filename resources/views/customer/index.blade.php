@@ -5,13 +5,8 @@
 <div class="row">
     <div class="col-md-12">
         <div class="row">
-
             <div class="col-sm-6">
-                <div id="datatable_filter" class="datatable_filter">
-                    <label>
-                        <input type="search" class="form-control input-sm" placeholder="&#xF002;  Cari pelanggan ..." style="font-family:Arial, FontAwesome; font-weight: normal">
-                    </label>
-                </div>
+                <h4>{{ $title }}</h4>
             </div>
 
 
@@ -139,24 +134,7 @@
 
         <div class="box box-warning">
             <div class="box-header">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h4>{{ $title }}</h4>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="dataTables_length" id="datatable_length" style="float:right">
-                            Tampilkan
-                            <label>
-                                <select name="datatable_length" aria-controls="datatable" class="form-control input-sm">
-                                    <option value="10">10</option>
-                                    <option value="25">25</option>
-                                    <option value="50">50</option>
-                                    <option value="100">100</option>
-                                </select>
-                            </label>
-                        </div>
-                    </div>
-                </div>
+
             </div>        
             <div class="box-body">
                 <div class="table-responsive">
@@ -264,7 +242,7 @@ $(document).ready(function(){
                 columns: [
                     {
                         data: 'nama',
-                        name: 'name'
+                        name: 'nama'
                     },
                     {
                         data: 'alamat',
