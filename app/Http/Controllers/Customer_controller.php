@@ -14,9 +14,9 @@ class Customer_controller extends Controller
             return datatables()->of($data)->addIndexColumn()
                 ->addColumn('action', function($customer){
 
-                    $btn = '<a class="btn btn-warning btn-xs btn-edit" data-toggle="modal" data-target="#editModal"><i class="fa fa-pencil-square-o"></i></a>';
+                    $btn = '<a class="btn btn-warning btn-sm btn-edit" data-toggle="modal" data-target="#editModal"><i class="fa fa-pencil-square-o"></i></a>';
                     $btn .= '&nbsp;&nbsp;';
-                    $btn .= '<button type="button" name="delete" id="'.$customer->id.'" class="btn btn-danger btn-sm deleteCustomer" ><i class="fas fa-trash"></i></button>';
+                    $btn .= '<button type="button" name="delete" id="'.$customer->id.'" class="btn btn-danger btn-sm deleteCustomer" ><i class="fa fa-trash"></i></button>';
                     return $btn;
                 })
                 ->rawColumns(['action'])

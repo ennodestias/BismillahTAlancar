@@ -18,6 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 //paket
+Route::get('/paket', 'Paket_controller@index');
 Route::post('/paket/add', 'Paket_controller@store');
 Route::put('/paket/edit/{id}', 'Paket_controller@update');
 

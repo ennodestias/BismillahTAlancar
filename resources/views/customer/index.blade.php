@@ -9,13 +9,15 @@
                 <h4>{{ $title }}</h4>
             </div>
 
+            <!-- Tombol untuk menampilkan modal-->
+            <div class="col-sm-6">
+                <p align="right">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Tambah Data</button>
+                </p>
+            </div>
+
 
         <!-- Modal untuk tambah data pelanggan -->
-            <div class="col-sm-6">
-                <div class="container">
-                    <!-- Tombol untuk menampilkan modal-->
-                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Tambah Data</button>
-            
                 <!-- Modal -->
                 <div id="myModal" class="modal fade" role="dialog">
                     <div class="modal-dialog">
@@ -61,8 +63,6 @@
                     </div>
                 </div>
 
-                    </div>
-                </div>
             </div>
 
         <!-- Modal untuk edit data pelanggan -->
@@ -116,13 +116,12 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Confirmation</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <h6 align="center" style="margin:0;">Anda yakin ingin menghapus data ini?</h6>
+                            <h4 align="center">Apakah Anda yakin ingin menghapus data ini?</h4>
                         </div>
                         <div class="modal-footer">
                             <button type="button" name="ok_button" id="ok_button" class="btn btn-danger">OK</button>
@@ -132,10 +131,7 @@
                 </div>
             </div>
 
-        <div class="box box-warning">
-            <div class="box-header">
-
-            </div>        
+        <div class="box box-primary">
             <div class="box-body">
                 <div class="table-responsive">
                     <table class="table" id="data_customer">
@@ -162,10 +158,10 @@
 
 @section('scripts')
 
- <!-- DataTables -->
- <script src="../../plugins/datatables/jquery.dataTables.js"></script>
-  <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
-  <!-- page script -->
+<!-- DataTables -->
+    <script src="../../plugins/datatables/jquery.dataTables.js"></script>
+    <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<!-- page script -->
 
 <script>
 $(document).ready(function(){   

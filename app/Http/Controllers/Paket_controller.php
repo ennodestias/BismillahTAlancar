@@ -7,10 +7,23 @@ use App\Paket;
 
 class Paket_controller extends Controller
 {
-    public function index(){
-        $title = 'Paket Laundry';
-        $paket = Paket::get();
-        return view('paket.index',compact('title','paket'));
+    public function index(Request $request){
+        $title = 'Data Paket';
+        $data = Paket::get();
+        if(request()->ajax()){
+            return datatables()->of($data)->addIndexColumn()
+                ->addColumn('action', function($paket){
+
+                    $btn = '<a class="btn btn-warning btn-sm btn-edit" data-toggle="modal" data-target="#editModal"><i class="fa fa-pencil-square-o"></i></a>';
+                    $btn .= '&nbsp;&nbsp;';
+                    $btn .= '<button type="button" name="delete" id="'.$paket->id.'" class="btn btn-danger btn-sm deletePaket" ><i class="fa fa-trash"></i></button>';
+                    return $btn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
+        return view('paket.index',compact('title','data'));
     }
 
     public function add(){
@@ -64,4 +77,12 @@ class Paket_controller extends Controller
         $paket->save();
         return response()->json(['message' => 'Data Paket berhasil diubah']);
     }
+
+    public function destroy($id)
+    {
+        $data = Customer::findOrFail($id);
+        $data->delete();
+        return response()->json(['message' => 'Data Paket berhasil dihapus']);
+    }
+
 }

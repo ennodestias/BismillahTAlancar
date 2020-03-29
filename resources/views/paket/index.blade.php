@@ -6,42 +6,144 @@
     <div class="col-md-12">
         <div class="row">
             <div class="col-sm-6">
-                <div id="datatable_filter" class="datatable_filter">
-                    <label>
-                        <input type="search" class="form-control input-sm" placeholder="&#xF002;  Cari paket ..." style="font-family:Arial, FontAwesome; font-weight: normal">
-                    </label>
-                </div>
+                <h4>{{ $title }}</h4> 
             </div>
+
+            <!-- Tombol untuk menampilkan modal-->
             <div class="col-sm-6">
                 <p align='right'> 
-                    <a href="{{ url('paket-laundry/add') }}" class="btn btn-sm btn-flat btn-primary"><i class="fa fa-plus"></i> Tambah Data</a>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahModal">Tambah Data</button>
                 </p>
             </div>
-        </div>
-        <div class="box box-warning">
-            <div class="box-header">    
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h4>{{ $title }}</h4> 
+
+        <!-- Modal untuk tambah data paket -->
+            <!-- Modal -->
+                <div id="tambahModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- konten modal-->
+                        <div class="modal-content">
+                        
+                            <!-- heading modal -->
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Tambahkan Data Paket</h4>
+                            </div>
+
+                            <!-- body modal -->
+                            <div class="modal-body">
+                                <form id="addpaket">
+                                    <div class="form-group">
+                                        <label>Nama</label>
+                                        <input type="text" name="nama" class="form-control" id="nama" placeholder="Nama Paket">
+                                    </div>
+                
+                                    <div class="form-group">
+                                        <label>Harga</label>
+                                        <input type="text" name="harga" class="form-control" id="harga" placeholder="Harga Paket">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Satuan</label>
+                                        <input type="text" name="satuan" class="form-control" id="satuan" placeholder="Satuan">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Durasi</label>
+                                        <input type="text" name="durasi" class="form-control" id="durasi" placeholder="Durasi Pengerjaan">
+                                    </div>
+                            </div>
+
+                            <!-- footer modal -->
+                            <div class="modal-footer">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <button type="submit" class="btn btn-primary" id="submit">Tambah</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            </form>
+                        </div>
                     </div>
-                    <div class="col-sm-6">
-                        <div class="dataTables_length" id="datatable_length" style="float:right">
-                            Tampilkan
-                            <label>
-                                <select name="datatable_length" aria-controls="datatable" class="form-control input-sm">
-                                    <option value="10">10</option>
-                                    <option value="25">25</option>
-                                    <option value="50">50</option>
-                                    <option value="100">100</option>
-                                </select>
-                            </label>
+                </div>
+
+            </div>
+
+        <!-- Modal untuk edit data pelanggan -->
+            <!-- Modal -->
+            <div id="editModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- konten modal-->
+                    <div class="modal-content">
+                    
+                        <!-- heading modal -->
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Edit Paket</h4>
+                        </div>
+
+                        <!-- body modal -->
+                        <div class="modal-body">
+                            <form id="editpaket">
+                                <div class="form-group">
+                                    <label>Nama</label>
+                                        <input type="text" name="nama" class="form-control" id="nama" placeholder="Nama Paket">
+                                    </div>
+                
+                                    <div class="form-group">
+                                        <label>Harga</label>
+                                        <input type="text" name="harga" class="form-control" id="harga" placeholder="Harga Paket">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Satuan</label>
+                                        <input type="text" name="satuan" class="form-control" id="satuan" placeholder="Satuan">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Durasi</label>
+                                        <input type="text" name="durasi" class="form-control" id="durasi" placeholder="Durasi Pengerjaan">
+                                    </div>
+                                </div>
+
+                        <!-- footer modal -->
+                        <div class="modal-footer">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <button type="submit" class="btn btn-primary" id="submitEdit">Perbarui</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal untuk menghapus data -->
+            <div id="confirmModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <h4 align="center">Apakah Anda yakin ingin menghapus data ini?</h4>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" name="ok_button" id="ok_button" class="btn btn-danger">OK</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                         </div>
                     </div>
                 </div>
             </div>
+
+        <div class="box box-primary">
             <div class="box-body">
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table" id="data_paket">
                         <thead>
                             <tr>
                                 <th>Nama</th>
@@ -52,20 +154,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach($paket as $pakets)
-                            <tr>
-                                <th>{{ $pakets -> nama }}</th>
-                                <th>{{ $pakets -> harga }}</th>
-                                <th>{{ $pakets -> satuan }}</th>
-                                <th>{{ $pakets -> durasi }}</th>
-                                <th>
-                                    <div style="width:60px">
-                                        <a href="{{ route('paket.edit', $pakets->id)}}" class="btn btn-warning btn-xs btn-edit" id="edit"><i class="fa fa-pencil-square-o"></i></a>
-                                        <button href="{{ url('paket-laundry/') }}" class="btn btn-danger btn-xs btn-hapus" id="delete"><i class="fa fa-trash-o"></i></button>
-                                    </div>
-                                </th>
-                            </tr>
-                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -75,4 +163,134 @@
     </div>
 </div>
  
+@endsection
+
+@section('scripts')
+
+<!-- DataTables -->
+    <script src="../../plugins/datatables/jquery.dataTables.js"></script>
+    <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<!-- page script -->
+
+
+<script>
+$(document).ready(function(){   
+    $('#addpaket').on('submit', function(e){
+        e.preventDefault();
+
+        var nama = $('#nama').val();
+        var harga = $('#harga').val();
+        var satuan = $('#satuan').val();
+        var durasi = $('#durasi').val();
+
+        $.ajax({
+            type: "POST",
+            headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+            url: "/api/paket/add",
+            cache:false,
+            dataType: "json",
+            data: $('#addpaket').serialize(),
+            success: function(data){
+                window.location = "/paket-laundry";
+                toastr.options.closeButton = true;
+                toastr.options.closeMethod = 'fadeOut';
+                toastr.options.closeDuration = 100;
+                toastr.success(data.message);
+            },
+            error: function(error){
+            console.log(error);
+            }
+        });
+    });
+});
+
+$(document).ready(function(){   
+    fill_datatable();
+        function fill_datatable(){
+            var dataTable = $('#data_paket').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax:{
+                    url: "/paket-laundry",
+                },
+                columns: [
+                    {
+                        data: 'nama',
+                        name: 'nama'
+                    },
+                    {
+                        data: 'harga',
+                        name: 'harga'
+                    },
+                    {
+                        data: 'satuan',
+                        name: 'satuan'
+                    },
+                    {
+                        data: 'durasi',
+                        name: 'durasi'
+                    },
+                    {data: 'action', name: 'action', orderable: false, searchable: false},
+                ]
+            });
+        }
+    });
+
+$(document).ready(function(){   
+    $('#editpaket').on('submit', function(e){
+        e.preventDefault();
+
+        var id = $('#id').val();
+        var nama = $('#nama').val();
+        var harga = $('#harga').val();
+        var satuan = $('#satuan').val();
+        var durasi = $('#durasi').val();
+
+        $.ajax({
+            type: "PUT",
+            headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+            url: "/api/paket/edit/"+id,
+            cache:false,
+            dataType: "json",
+            data: $('#editpaket').serialize(),
+            success: function(data){
+                window.location = "/paket-laundry";
+                toastr.options.closeButton = true;
+                toastr.options.closeMethod = 'fadeOut';
+                toastr.options.closeDuration = 100;
+                toastr.success(data.message);
+            },
+            error: function(error){
+            console.log(error);
+            }
+        });
+    });
+});
+
+$(document).on('click', '.deletePaket', function(){
+    var id = $(this).attr('id');
+    $('#confirmModal').modal('show');
+  });
+  $('#ok_button').click(function(){
+    $.ajax({
+        type: "DELETE",
+        headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+        dataType: "json",
+        url: '/api/paket/'+id,
+        beforeSend:function(){
+          $('#ok_button').text('Deleting...');
+        },
+        success: function (data) {
+          $('#confirmModal').modal('hide');
+            $('#data_paket').DataTable().ajax.reload();
+            toastr.options.closeButton = true;
+            toastr.options.closeMethod = 'fadeOut';
+            toastr.options.closeDuration = 100;
+            toastr.success(data.message);
+        }
+    });
+});
+
+</script>
+
 @endsection
