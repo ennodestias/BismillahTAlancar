@@ -31,6 +31,8 @@ Route::group(['middleware'=>'auth'],function(){
 
     Route::get("pesanan", 'Pesanan_controller@index');
     Route::get("pesanan/add", 'Pesanan_controller@add');
+
+    Route::get("riwayat", 'Riwayat_controller@index');
 });
 
 

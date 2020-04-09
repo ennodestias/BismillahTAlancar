@@ -29,4 +29,7 @@ Route::put('/customer/edit/{id}', 'Customer_controller@update');
 Route::delete('/customer/{id}', 'Customer_controller@destroy');
 
 //karyawan
+Route::get('/karyawan', 'Karyawan_controller@index');
 Route::post('/karyawan/add', 'Karyawan_controller@store');
+Route::put('/karyawan/edit/{id}', 'Karyawan_controller@update');
+Route::delete('/karyawan/{id}', 'Karyawan_controller@destroy');

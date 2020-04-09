@@ -12,11 +12,23 @@ class Karyawan_controller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $title = 'Data Karyawan';
-        $karyawan = Karyawan::get();
-        return view('karyawan.index',compact('title','karyawan'));
+    public function index(Request $request){
+        $title = 'Data Pelanggan';
+        $data = Karyawan::get();
+        if(request()->ajax()){
+            return datatables()->of($data)->addIndexColumn()
+                ->addColumn('action', function($karyawan){
+
+                    $btn = '<a class="btn btn-warning btn-sm btn-edit" data-toggle="modal" data-target="#editModal"><i class="fa fa-pencil-square-o"></i></a>';
+                    $btn .= '&nbsp;&nbsp;';
+                    $btn .= '<button type="button" name="delete" id="'.$karyawan->id.'" class="btn btn-danger btn-sm deleteKaryawan" ><i class="fa fa-trash"></i></button>';
+                    return $btn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
+        return view('karyawan.index',compact('title','data'));
     }
 
     /**
@@ -123,6 +135,8 @@ class Karyawan_controller extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Karyawan::findOrFail($id);
+        $data->delete();
+        return response()->json(['message' => 'Data Karyawan berhasil dihapus']);
     }
 }

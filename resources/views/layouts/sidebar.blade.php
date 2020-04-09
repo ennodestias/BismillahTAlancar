@@ -16,7 +16,7 @@
         </li>
 
         <li>
-          <a href="#">
+          <a href="{{ url('/riwayat') }}">
             <i class="fa fa-pie-chart"></i>
             <span>Riwayat Laundry</span>
           </a>
@@ -54,7 +54,7 @@
         <li class="menu-sidebar"><a href="{{ url('/reset-password') }}"><span class="glyphicon glyphicon-log-out"></span> Reset Password</span></a></li>
         @endif
 
-        <li class="menu-sidebar"><a href="{{ url('/keluar') }}"><span class="glyphicon glyphicon-log-out">Logout</span></a></li>
+        <li class="menu-sidebar"><a href="{{ url('/keluar') }}"><span class="glyphicon glyphicon-log-out"></span><span>Logout</span></a></li>
 
 
       </ul>

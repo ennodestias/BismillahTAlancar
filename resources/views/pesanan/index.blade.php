@@ -6,16 +6,7 @@
     <div class="col-md-12">
         <div class="row">
             <div class="col-sm-6">
-                <div id="datatable_filter" class="datatable_filter">
-                    <label>
-                        <input type="search" class="form-control input-sm" placeholder="&#xF002;  Cari paket ..." style="font-family:Arial, FontAwesome; font-weight: normal">
-                    </label>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <p align='right'> 
-                    <a href="{{ url('pesanan/add') }}" class="btn btn-sm btn-flat btn-primary"><i class="fa fa-plus"></i> Tambah Data</a>
-                </p>
+                <h4>{{ $title }}</h4>
             </div>
         </div>
     
@@ -33,6 +24,11 @@
           </div>
           <!-- nav-tabs-custom -->
         </div>
+        <div class="col-sm-6">
+            <p align='right'> 
+                <a href="{{ url('pesanan/add') }}" class="btn btn-sm btn-flat btn-primary"><i class="fa fa-plus"></i> Tambah Data</a>
+            </p>
+        </div>
         <!-- /.col -->
     </div>
     <!-- /.row -->
@@ -40,7 +36,7 @@
         <div class="box box-primary">
             <div class="box-body">
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table" id="data_pesanan">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -56,23 +52,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th>
-                                    <div style="width:60px">
-                                        <a href="" class="btn btn-warning btn-xs btn-edit" id="edit"><i class="fa fa-pencil-square-o"></i></a>
-                                        <button href="" class="btn btn-danger btn-xs btn-hapus" id="delete"><i class="fa fa-trash-o"></i></button>
-                                    </div>
-                                </th>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -82,4 +61,49 @@
     </div>
 </div>
  
+@endsection
+
+
+@section('scripts')
+
+<!-- DataTables -->
+    <script src="../../plugins/datatables/jquery.dataTables.js"></script>
+    <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<!-- page script -->
+
+<script>
+$(document).ready(function(){   
+    fill_datatable();
+        function fill_datatable(){
+            var dataTable = $('#data_pesanan').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax:{
+                    url: "/pesanan",
+                },
+                columns: [
+                    {
+                        data: 'no',
+                        name: 'no'
+                    },
+                    {
+                        data: 'nama',
+                        name: 'nama'
+                    },
+                    {
+                        data: 'alamat',
+                        name: 'alamat'
+                    },
+                    {
+                        data: 'nohp',
+                        name: 'nohp'
+                    },
+                    {data: 'action', name: 'action', orderable: false, searchable: false},
+                ]
+            });
+        }
+    });
+
+</script>
+
 @endsection
